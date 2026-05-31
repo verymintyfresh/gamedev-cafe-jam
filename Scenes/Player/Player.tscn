@@ -4,13 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://c206h3b22lopp" path="res://Tilemap/monochrome_tilemap_transparent.png" id="2_gntrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
+size = Vector2(8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8w5"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(102, 204, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ixxa"]
 atlas = ExtResource("2_gntrk")
 region = Rect2(0, 204, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji083"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(68, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kmp4"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(17, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5acl"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(34, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg6k"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(51, 204, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nn08x"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8w5")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ixxa")
@@ -18,16 +47,39 @@ animations = [{
 "loop": false,
 "name": &"Idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji083")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kmp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5acl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg6k")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1934355691]
 script = ExtResource("1_kyqiw")
-SPEED = 100.0
-JUMP_VELOCITY = 200.0
+JUMP_VELOCITY = -200.0
+GRAVITY = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586163545]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_dewec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=661783806]
 sprite_frames = SubResource("SpriteFrames_nn08x")
-animation = &"Idle"
+animation = &"Run"
