@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY = -1000.0
 @export var GRAVITY = 200.0
 
+#func _ready() -> void:
+	#get_tree().create_timer(5).timeout.connect(move_camera)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,3 +43,9 @@ func _input(event):
 	if event.is_action_pressed("ui_jump") and is_on_floor():
 		velocity.y += JUMP_VELOCITY
 		$AnimatedSprite2D.play("Jump")
+		
+func move_camera():
+	print("Moving camera")
+	var tween = get_tree().create_tween()
+	tween.tween_property($Camera2D, "limit_left", 320, 0.5)
+	tween.tween_property($Camera2D, "limit_right", 640, 0.5)

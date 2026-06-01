@@ -83,3 +83,9 @@ shape = SubResource("RectangleShape2D_dewec")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=661783806]
 sprite_frames = SubResource("SpriteFrames_nn08x")
 animation = &"Run"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=612066794]
+limit_left = 0
+limit_top = 0
+limit_right = 320
+limit_bottom = 176
