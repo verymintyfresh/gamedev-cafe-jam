@@ -2,19 +2,29 @@ extends CharacterBody2D
 class_name Player
 
 @export var SPEED = 100.0
+@export var CLIMBING_SPEED = -100.0
 @export var JUMP_VELOCITY = -1000.0
 @export var GRAVITY = 200.0
 @export var TERMINAL_VELOCITY = 500.0
 
 @onready var collider = $CollisionShape2D
 
+var can_climb: bool = false
+var is_actually_climbing: bool = false
+
 #func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_actually_climbing:
 		velocity += get_gravity() * delta
 		velocity.y = min(velocity.y, TERMINAL_VELOCITY)
+
+	if !MainGame._instance.is_on_ladder(global_position):
+		can_climb = false
+		is_actually_climbing = false
+	else:
+		can_climb = true
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -43,6 +53,16 @@ func player_animations():
 
 func _input(event):
 	# jumping
+	if can_climb:
+		if (event.is_action_released("ui_up")
+		or event.is_action_released("ui_down")):
+			velocity.y = 0
+		if Input.is_action_pressed("ui_up"):
+			velocity.y = CLIMBING_SPEED
+			is_actually_climbing = true
+		if Input.is_action_pressed("ui_down"):
+			velocity.y = -1 * CLIMBING_SPEED
+			is_actually_climbing = true
 	if event.is_action_pressed("ui_jump") and is_on_floor():
 		velocity.y += JUMP_VELOCITY
 		$AnimatedSprite2D.play("Jump")

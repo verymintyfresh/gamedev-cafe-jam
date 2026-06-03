@@ -32,6 +32,11 @@ region = Rect2(51, 204, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nn08x"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Climb",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ft8w5")
@@ -82,7 +87,7 @@ shape = SubResource("RectangleShape2D_dewec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=661783806]
 sprite_frames = SubResource("SpriteFrames_nn08x")
-animation = &"Run"
+animation = &"Jump"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=612066794]
 limit_left = 0

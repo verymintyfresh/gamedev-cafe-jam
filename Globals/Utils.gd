@@ -19,3 +19,11 @@ func map_to_coords_bottom_right(coords):
 
 func measure_player_screen_bottom_right(screen: Vector2i, player: Player):
 	return map_to_coords(screen) - Vector2(player.collider.shape.size.x,player.collider.shape.size.y)
+
+func get_custom_data_at(tilemap: TileMapLayer, pos: Vector2, data: String) -> Variant:
+	var cell = tilemap.local_to_map(tilemap.to_local(pos))
+	var cell_data = tilemap.get_cell_tile_data(cell)
+	if cell_data:
+		return cell_data.get_custom_data(data)
+	else:
+		return 0

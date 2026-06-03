@@ -1,11 +1,15 @@
 extends Node2D
+class_name MainGame
 
 var current_screen = Vector2i(0,0)
 var is_mid_transition = false
 
+static var _instance: MainGame = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.screen_transition.connect(move_screen)
+	_instance = self if _instance == null else _instance
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,3 +77,6 @@ func move_screen(transform):
 	$Player.set_process_input(true)	
 	
 	is_mid_transition = false
+
+func is_on_ladder(pos) -> bool:
+	return Utils.get_custom_data_at($Ladder, pos, "is_ladder")
