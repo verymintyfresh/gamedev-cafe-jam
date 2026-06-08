@@ -27,3 +27,6 @@ func get_custom_data_at(tilemap: TileMapLayer, pos: Vector2, data: String) -> Va
 		return cell_data.get_custom_data(data)
 	else:
 		return 0
+		
+func fuzzy_equals(first, second, delta) -> bool:
+	return abs(first - second) < delta

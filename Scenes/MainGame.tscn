@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://bqfu7g3cmc5kq" path="res://Tilemap/monochrome_tile_set.tres" id="2_frf35"]
 [ext_resource type="FontFile" uid="uid://v5fhxmri553v" path="res://Nineteen Eighty Seven.otf" id="4_ybmw1"]
 [ext_resource type="PackedScene" uid="uid://jk3dq802px60" path="res://Scenes/Macguffin/Macguffin.tscn" id="5_321ql"]
+[ext_resource type="PackedScene" uid="uid://bxrwh7mcei3a0" path="res://Scenes/Friend/Friend.tscn" id="6_d4f28"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_321ql"]
 line_spacing = 0.0
@@ -56,4 +57,10 @@ label_settings = SubResource("LabelSettings_321ql")
 horizontal_alignment = 1
 
 [node name="Macguffin" parent="." unique_id=2003727641 instance=ExtResource("5_321ql")]
-position = Vector2(272, 110)
+position = Vector2(1255, 87)
+
+[node name="Friend" parent="." unique_id=863004556 instance=ExtResource("6_d4f28")]
+position = Vector2(215, 152)
+speech = "Hi, player!
+Welcome to our village."
+patrol = Vector2(180, 240)
