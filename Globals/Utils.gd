@@ -1,7 +1,7 @@
 extends Node
 
-@export var SCREEN_WIDTH = 320
-@export var SCREEN_HEIGHT = 176
+@export var SCREEN_WIDTH = 960
+@export var SCREEN_HEIGHT = 528
 @export var CAMERA_SPEED = 0.6
 
 func coords_to_map(coords):

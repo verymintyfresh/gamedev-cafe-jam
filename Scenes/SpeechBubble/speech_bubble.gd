@@ -6,12 +6,8 @@ class_name SpeechBubble
 @onready var label = %Text:
 	set(text):
 		label.text = text
-		max_size = size
 
-var anchor: Vector2:
-	set(value):
-		position = value - Vector2(max_size.x/2,max_size.y)
-		top_left = position
+var anchor: Vector2 
 var max_size: Vector2
 var top_left: Vector2
 
@@ -22,11 +18,8 @@ func _ready() -> void:
 
 func delete() -> void:
 	%Text.hide()
-	var target = Vector2(0, (top_left.y + max_size.y) / 2)
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
-	tween.parallel().tween_property(self, "position", target, SCALE_TIME).from(top_left)
-	tween.parallel().tween_property(self, "size:x", 0, SCALE_TIME).from(size.x)
-	tween.parallel().tween_property(self, "size:y", 0, SCALE_TIME).from(size.y)
+	tween.tween_property(self, "scale", Vector2(0,0), SCALE_TIME).from(Vector2(1,1))
 	await tween.finished
 	hide()
 
@@ -37,12 +30,10 @@ func _process(delta: float) -> void:
 
 func spawn() -> void:
 	show()
-	position = anchor - Vector2(0,max_size.y/2)
-	#size = Vector2.ZERO
+	%Text.hide()
+	position = anchor - Vector2(size.x/2,size.y)
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
-	tween.parallel().tween_property(self, "position", top_left, SCALE_TIME).from(position)
-	tween.parallel().tween_property(self, "size:x", max_size.x, SCALE_TIME).from(0)
-	tween.parallel().tween_property(self, "size:y", max_size.y, SCALE_TIME).from(0)
+	tween.tween_property(self, "scale", Vector2(1,1), SCALE_TIME).from(Vector2(0,0))
 	await tween.finished
 	%Text.show()
 	#show()

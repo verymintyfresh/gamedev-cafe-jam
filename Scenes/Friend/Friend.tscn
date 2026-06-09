@@ -5,42 +5,33 @@
 [ext_resource type="PackedScene" uid="uid://dhahfi1fv52u1" path="res://Scenes/SpeechBubble/SpeechBubble.tscn" id="3_utdf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
-size = Vector2(8, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umo6r"]
-atlas = ExtResource("2_ooh64")
-region = Rect2(102, 238, 16, 16)
+size = Vector2(24, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_utdf0"]
 atlas = ExtResource("2_ooh64")
-region = Rect2(0, 238, 16, 16)
+region = Rect2(306, 714, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrvql"]
 atlas = ExtResource("2_ooh64")
-region = Rect2(68, 238, 16, 16)
+region = Rect2(0, 714, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1mcp"]
 atlas = ExtResource("2_ooh64")
-region = Rect2(17, 238, 16, 16)
+region = Rect2(51, 714, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjwr3"]
 atlas = ExtResource("2_ooh64")
-region = Rect2(34, 238, 16, 16)
+region = Rect2(102, 714, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2oywj"]
 atlas = ExtResource("2_ooh64")
-region = Rect2(51, 238, 16, 16)
+region = Rect2(153, 714, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nn08x"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"Climb",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_umo6r")
+"texture": SubResource("AtlasTexture_utdf0")
 }],
 "loop": false,
 "name": &"Dead",
@@ -48,19 +39,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_utdf0")
+"texture": SubResource("AtlasTexture_rrvql")
 }],
 "loop": false,
 "name": &"Idle",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rrvql")
-}],
-"loop": true,
-"name": &"Jump",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -78,14 +61,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umo6r"]
-radius = 35.014282
+radius = 71.568146
 
 [node name="Friend" type="CharacterBody2D" unique_id=245566164]
 collision_layer = 2
 script = ExtResource("1_y0dgi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586163545]
-position = Vector2(0, 3)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_dewec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=661783806]
@@ -102,6 +85,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_umo6r")
 
 [node name="SpeechBubble" parent="." unique_id=2091638528 instance=ExtResource("3_utdf0")]
+visible = false
 offset_left = -14.0
 offset_top = -18.5
 offset_right = 14.0

@@ -4,31 +4,31 @@
 [ext_resource type="Texture2D" uid="uid://c206h3b22lopp" path="res://Tilemap/monochrome_tilemap_transparent.png" id="2_gntrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
-size = Vector2(8, 10)
+size = Vector2(24, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft8w5"]
 atlas = ExtResource("2_gntrk")
-region = Rect2(102, 204, 16, 16)
+region = Rect2(306, 612, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ixxa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h54ih"]
 atlas = ExtResource("2_gntrk")
-region = Rect2(0, 204, 16, 16)
+region = Rect2(0, 612, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ji083"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ude3g"]
 atlas = ExtResource("2_gntrk")
-region = Rect2(68, 204, 16, 16)
+region = Rect2(204, 612, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0kmp4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmcll"]
 atlas = ExtResource("2_gntrk")
-region = Rect2(17, 204, 16, 16)
+region = Rect2(51, 612, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5acl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wape"]
 atlas = ExtResource("2_gntrk")
-region = Rect2(34, 204, 16, 16)
+region = Rect2(102, 612, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_epg6k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t26db"]
 atlas = ExtResource("2_gntrk")
-region = Rect2(51, 204, 16, 16)
+region = Rect2(153, 612, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nn08x"]
 animations = [{
@@ -47,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5ixxa")
+"texture": SubResource("AtlasTexture_h54ih")
 }],
 "loop": false,
 "name": &"Idle",
@@ -55,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ji083")
+"texture": SubResource("AtlasTexture_ude3g")
 }],
 "loop": true,
 "name": &"Jump",
@@ -63,13 +63,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0kmp4")
+"texture": SubResource("AtlasTexture_jmcll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i5acl")
+"texture": SubResource("AtlasTexture_4wape")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_epg6k")
+"texture": SubResource("AtlasTexture_t26db")
 }],
 "loop": true,
 "name": &"Run",
@@ -83,16 +83,15 @@ JUMP_VELOCITY = -200.0
 GRAVITY = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586163545]
-position = Vector2(0, 3)
+position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_dewec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=661783806]
 sprite_frames = SubResource("SpriteFrames_nn08x")
-animation = &"Jump"
+animation = &"Run"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=612066794]
-zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 320
-limit_bottom = 176
+limit_right = 960
+limit_bottom = 528

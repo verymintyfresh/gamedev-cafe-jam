@@ -1,11 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
-@export var SPEED = 100.0
-@export var CLIMBING_SPEED = -100.0
+@export var SPEED = 200.0
+@export var CLIMBING_SPEED = -200.0
 @export var JUMP_VELOCITY = -1000.0
-@export var GRAVITY = 200.0
-@export var TERMINAL_VELOCITY = 500.0
+@export var GRAVITY = 300.0
+@export var TERMINAL_VELOCITY = 1000.0
 
 @onready var collider = $CollisionShape2D
 
