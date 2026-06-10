@@ -24,7 +24,8 @@ font = ExtResource("2_174xk")
 font_size = 24
 
 [node name="SpeechBubble" type="MarginContainer" unique_id=2091638528]
-modulate = Color(0.60784316, 0.7372549, 0.05882353, 1)
+z_index = 1
+y_sort_enabled = true
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,8 +40,14 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 1)
 script = ExtResource("1_174xk")
+SCALE_TIME = 0.2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=590235433]
+layout_mode = 2
+color = Color(0.05882353, 0.21960784, 0.05882353, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=11505172]
+modulate = Color(0.60784316, 0.7372549, 0.05882353, 1)
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_d4eh0")

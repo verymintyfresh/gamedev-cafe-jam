@@ -2,6 +2,7 @@ extends Node2D
 class_name MainGame
 
 var current_screen = Vector2i(0,0)
+@export var testing_screen = Vector2i(0,0)
 var is_mid_transition = false
 
 static var _instance: MainGame = null
@@ -10,23 +11,24 @@ static var _instance: MainGame = null
 func _ready() -> void:
 	EventBus.screen_transition.connect(move_screen)
 	_instance = self if _instance == null else _instance
+	move_screen(testing_screen)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if $Player.position.x <= Utils.map_to_coords(current_screen).x:
+	if $Player.position.x < Utils.map_to_coords(current_screen).x and $Player.velocity.x < 0:
 		if !is_mid_transition:
 			EventBus.screen_transition.emit(Vector2i(-1,0))
 			#print("Moving screen LEFT")
-	elif $Player.position.y <= Utils.map_to_coords(current_screen).y:
+	elif $Player.position.y < Utils.map_to_coords(current_screen).y and $Player.velocity.y < 0:
 		if !is_mid_transition:
 			EventBus.screen_transition.emit(Vector2i(0,-1))
 			#print("Moving screen UP")
-	elif $Player.position.x >= Utils.map_to_coords_bottom_right(current_screen).x:
+	elif $Player.position.x >= Utils.map_to_coords_bottom_right(current_screen).x and $Player.velocity.x > 0:
 		if !is_mid_transition:
 			EventBus.screen_transition.emit(Vector2i(1,0))
 			#print("Moving screen RIGHT")
-	elif $Player.position.y >= Utils.map_to_coords_bottom_right(current_screen).y:
+	elif $Player.position.y >= Utils.map_to_coords_bottom_right(current_screen).y and $Player.velocity.y > 0:
 		if !is_mid_transition:
 			EventBus.screen_transition.emit(Vector2i(0,1))
 			#print("Moving screen DOWN")
@@ -59,13 +61,15 @@ func move_screen(transform):
 	var target_position = $Player.position
 	match transform:
 		Vector2i(-1,0): # traveling left, match right of player
-			target_position.x = right - 5
+			target_position.x = right - 24
 		Vector2i(0,-1):
-			target_position.y = bottom - 5
+			target_position.y = bottom - 24
 		Vector2i(1,0):
-			target_position.x = left + 5
+			target_position.x = left + 24
+		Vector2i(-1,0):
+			target_position.y = top + 24
 		_:
-			target_position.y = top + 5
+			pass
 	
 	print("Moving from", $Player.position)
 	print("Moving to", target_position)

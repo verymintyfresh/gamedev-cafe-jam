@@ -6,15 +6,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ej7mw"]
 radius = 17.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gk8ui"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxson"]
 atlas = ExtResource("2_cxson")
-region = Rect2(238, 0, 16, 16)
+region = Rect2(714, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e3inc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gk8ui")
+"texture": SubResource("AtlasTexture_cxson")
 }],
 "loop": true,
 "name": &"idle",
@@ -22,6 +22,7 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_cxson"]
+interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gk8ui"]
@@ -129,12 +130,14 @@ debug_color = Color(0.8610924, 0.33499888, 0.36550382, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=1636106392]
 modulate = Color(0.8368203, 0.19838208, 0.41020083, 1)
-scale = Vector2(2, 2)
+scale = Vector2(0.95833325, 0.9583332)
 sprite_frames = SubResource("SpriteFrames_e3inc")
 animation = &"idle"
 
 [node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D" unique_id=1440311329]
+z_index = -1
 position = Vector2(0, 1.2955723)
+scale = Vector2(4.792744, 4.792744)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.65882355)
 shadow_filter_smooth = 2.5

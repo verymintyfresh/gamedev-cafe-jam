@@ -79,8 +79,11 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=1934355691]
 collision_layer = 4
 script = ExtResource("1_kyqiw")
-JUMP_VELOCITY = -200.0
-GRAVITY = 20.0
+SPEED = 250.0
+CLIMBING_SPEED = -200.0
+JUMP_VELOCITY = -300.0
+GRAVITY = 1000.0
+TERMINAL_VELOCITY = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586163545]
 position = Vector2(0, 10.5)

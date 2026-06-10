@@ -61,7 +61,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umo6r"]
-radius = 71.568146
+radius = 118.004234
 
 [node name="Friend" type="CharacterBody2D" unique_id=245566164]
 collision_layer = 2
@@ -72,6 +72,7 @@ position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_dewec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=661783806]
+modulate = Color(0.60784316, 0.7372549, 0.05882353, 1)
 sprite_frames = SubResource("SpriteFrames_nn08x")
 animation = &"Run"
 

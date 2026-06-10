@@ -1,18 +1,19 @@
 extends CharacterBody2D
 class_name Player
 
-@export var SPEED = 200.0
-@export var CLIMBING_SPEED = -200.0
-@export var JUMP_VELOCITY = -1000.0
-@export var GRAVITY = 300.0
-@export var TERMINAL_VELOCITY = 1000.0
+@export var SPEED: float
+@export var CLIMBING_SPEED: float
+@export var JUMP_VELOCITY: float
+@export var GRAVITY: float
+@export var TERMINAL_VELOCITY: float
 
 @onready var collider = $CollisionShape2D
 
 var can_climb: bool = false
 var is_actually_climbing: bool = false
 
-#func _ready() -> void:
+func _ready() -> void:
+	$Camera2D.force_update_scroll()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
