@@ -5,6 +5,8 @@ var current_screen = Vector2i(0,0)
 @export var testing_screen = Vector2i(0,0)
 var is_mid_transition = false
 
+var got_to_boss = false
+
 static var _instance: MainGame = null
 
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +14,7 @@ func _ready() -> void:
 	EventBus.screen_transition.connect(move_screen)
 	_instance = self if _instance == null else _instance
 	move_screen(testing_screen)
+	EventBus.got_macguffin.connect(on_got_macguffin)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +35,10 @@ func _process(delta: float) -> void:
 		if !is_mid_transition:
 			EventBus.screen_transition.emit(Vector2i(0,1))
 			#print("Moving screen DOWN")
+			
+	if current_screen == Vector2i(13,3) and not got_to_boss:
+		EventBus.got_to_boss.emit()
+		got_to_boss = true
 
 func move_screen(transform):
 	is_mid_transition = true
@@ -84,3 +91,20 @@ func move_screen(transform):
 
 func is_on_ladder(pos) -> bool:
 	return Utils.get_custom_data_at($Ladder, pos, "is_ladder")
+	
+func on_got_macguffin():
+	await get_tree().create_timer(4.5).timeout
+	var label = $Label8
+	var oldtext = label.text
+	var newtext = "no time to\nPRACTICE !!\n\nhit ENTER !!"
+	
+	await get_tree().create_timer(0.1).timeout
+	label.text = newtext
+	await get_tree().create_timer(0.1).timeout
+	label.text = oldtext
+	await get_tree().create_timer(0.1).timeout
+	label.text = newtext
+	await get_tree().create_timer(0.05).timeout
+	label.text = oldtext
+	await get_tree().create_timer(0.05).timeout
+	label.text = newtext

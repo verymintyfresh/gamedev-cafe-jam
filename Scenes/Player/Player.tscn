@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gjvsm5n88cqk" path="res://Scenes/Player/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://c206h3b22lopp" path="res://Tilemap/monochrome_tilemap_transparent.png" id="2_gntrk"]
+[ext_resource type="PackedScene" uid="uid://bs0phwkvvmnip" path="res://Scenes/Bullets/Bullet.tscn" id="2_h54ih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
 size = Vector2(24, 27)
@@ -84,6 +85,7 @@ CLIMBING_SPEED = -200.0
 JUMP_VELOCITY = -300.0
 GRAVITY = 1000.0
 TERMINAL_VELOCITY = 1000.0
+bullet = ExtResource("2_h54ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586163545]
 position = Vector2(0, 10.5)
@@ -98,3 +100,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 960
 limit_bottom = 528
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1670387811]
+position = Vector2(20, 13)

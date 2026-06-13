@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c206h3b22lopp" path="res://Tilemap/monochrome_tilemap_transparent.png" id="2_cxson"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ej7mw"]
-radius = 17.0
+radius = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxson"]
 atlas = ExtResource("2_cxson")
@@ -27,11 +27,11 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gk8ui"]
 gradient = SubResource("Gradient_cxson")
-width = 96
-height = 96
+width = 512
+height = 512
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.84615386, 0.17094018)
+fill_to = Vector2(0.8652174, 0.20434782)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p54gb"]
 animation = &"wobble"
@@ -121,6 +121,8 @@ _data = {
 }
 
 [node name="Macguffin" type="Area2D" unique_id=2003727641]
+disable_mode = 1
+collision_mask = 4
 script = ExtResource("1_c0ja1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=198699175]
@@ -135,9 +137,11 @@ sprite_frames = SubResource("SpriteFrames_e3inc")
 animation = &"idle"
 
 [node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D" unique_id=1440311329]
+modulate = Color(1.353, 1.353, 1.353, 1)
 z_index = -1
 position = Vector2(0, 1.2955723)
 scale = Vector2(4.792744, 4.792744)
+color = Color(4.331, 0, 4.193, 1)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.65882355)
 shadow_filter_smooth = 2.5
@@ -154,4 +158,4 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_e3inc")
 autoplay = &"wobble"
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]

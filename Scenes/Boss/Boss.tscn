@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dbbjbcllsv1bu"]
+
+[ext_resource type="Texture2D" uid="uid://bhcgecow1dx20" path="res://Tilemap/32x32-Charset.png" id="1_b3u3o"]
+[ext_resource type="Script" uid="uid://b0il2fsi2wp8h" path="res://Scenes/Boss/boss.gd" id="1_xyuww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3u3o"]
+size = Vector2(95, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyuww"]
+atlas = ExtResource("1_b3u3o")
+region = Rect2(160, 544, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxow8"]
+atlas = ExtResource("1_b3u3o")
+region = Rect2(192, 544, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsvkr"]
+atlas = ExtResource("1_b3u3o")
+region = Rect2(128, 544, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjv7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyuww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxow8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxow8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxow8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxow8")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsvkr")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Boss" type="CharacterBody2D" unique_id=1529833769]
+script = ExtResource("1_xyuww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668488182]
+position = Vector2(-0.5, 38.5)
+shape = SubResource("RectangleShape2D_b3u3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=42879491]
+modulate = Color(4.331, 0, 4.193, 1)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_mjv7n")
+animation = &"Idle"
+
+[node name="Timer" type="Timer" parent="." unique_id=507998006]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="choose_ai"]

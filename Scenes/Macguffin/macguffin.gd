@@ -33,8 +33,19 @@ func _process(delta: float) -> void:
 			#if progress <= 0:
 				#switch_state(State.WOBBLE_UP)
 
-func _on_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+func _on_player_entered(body: Player) -> void:
+	EventBus.got_macguffin.emit() # Replace with function body.
+	await get_tree().create_timer(1).timeout
+	var tween = create_tween().set_parallel()
+	tween.tween_property(self, "global_position", body.anchor, 2.0)
+	tween.tween_property(self, "scale", Vector2(0.2, 0.2), 2.0)
+	await tween.finished
+	tween.kill()
+	await get_tree().create_timer(1).timeout
+	tween = create_tween().set_parallel()
+	tween.tween_property(self, "global_position", global_position + Vector2(0,30), 1.0)
+	tween.tween_property(self, "scale", Vector2.ZERO, 1.0)
+	await tween.finished
 
 #func switch_state(new_state):
 	#current_state = new_state
